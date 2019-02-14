@@ -1,13 +1,22 @@
+'''
+爬取拉钩数据分析岗位信息
+    网页加载：XHR
+    使用post 获取网页
+    json.loads 解析数据
+    select 查询数据
+'''
 import requests,json
 from lxml import etree
 import time
 import datetime
+
+#时间戳
 now = datetime.datetime.now()
 timeStamp = int(now.timestamp()*1000)
 geshi = "%Y%m%d%H%M%S"
 time1 = datetime.datetime.strftime(now,geshi)
 
-
+# 获取和解析网页
 url = 'https://www.lagou.com/jobs/positionAjax.json?city=%E5%8C%97%E4%BA%AC&needAddtionalResult=false'
 my_data = {'first': 'true','pn': '1','kd': '数据分析'}
 my_headers = {
@@ -18,8 +27,17 @@ my_headers = {
 ,'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36'
 }
 url_data = requests.post(url,data = my_data,headers = my_headers).text
-print(url_data)
+# print(url_data)
 json_data = json.loads(url_data)
 total_data = json_data['content']['positionResult']['result']
-print(total_data)
-# print(json_data)
+
+# 获取数据
+for data in total_data:
+    print(data)
+    company = data['companyShortName'] #公司名称
+    salary = data['salary'] #薪酬
+    district = data['district'] #城区
+    businessZones = data['businessZones'] #商圈
+    time.sleep(1)
+
+
