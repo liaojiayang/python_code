@@ -19,9 +19,10 @@ time1 = datetime.datetime.strftime(now,geshi)
 
 # 获取和解析网页
 w = open(r'H:\OneDrive\工作\编程设计\spyder\2.爬取拉钩职位\Data.csv', 'w', encoding='gbk')
-url = 'https://www.lagou.com/jobs/positionAjax.json?city={}&needAddtionalResult=false'.format(quote('成都'))  #输入城市编码成网络
+url = 'https://www.lagou.com/jobs/positionAjax.json?px=default&city={}&district={}&needAddtionalResult=false'\
+    .format(quote('北京'),quote('朝阳区'))  #输入城市编码成网络
 for i in range(1,31):
-    my_data = {'first': 'true','pn': '{}'.format(i),'kd': '财务'}
+    my_data = {'first': 'true','pn': '{}'.format(i),'kd': '数据分析'} #查询职位
     my_headers = {
     'Cookie': "_ga=GA1.2.387210786.1550136578; _gid=GA1.2.1394432396.1550136578; user_trace_token=20190214172939-0d0a35d0-303b-11e9-be9c-525400f775ce; LGUID=20190214172939-0d0a39ee-303b-11e9-be9c-525400f775ce; index_location_city=%E5%8C%97%E4%BA%AC; WEBTJ-ID=20190215094941-168eed855e3498-0e8ac79ee51a4c-57b1a3f-2073600-168eed855e55b4; LGSID=20190215094943-f70ccf8e-30c3-11e9-8025-525400f775ce; PRE_UTM=m_cf_cpt_baidu_pc; PRE_HOST=www.baidu.com; PRE_SITE=https%3A%2F%2Fwww.baidu.com%2Fs%3Fword%3D%25E6%258B%2589%25E5%258B%25BE%25E7%25BD%2591%26tn%3D25017023_10_pg%26lm%3D-1%26ssl_s%3D1%26ssl_c%3Dssl1_168eed84d9c; PRE_LAND=https%3A%2F%2Fwww.lagou.com%2Flp%2Fhtml%2Fcommon.html%3Futm_source%3Dm_cf_cpt_baidu_pc; Hm_lvt_4233e74dff0ae5bd0a3d81c6ccf756e6=1550136578,1550136697,1550195382; sajssdk_2015_cross_new_user=1; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%22168eed85d133e2-0daeed2e9fe146-57b1a3f-2073600-168eed85d1493f%22%2C%22%24device_id%22%3A%22168eed85d133e2-0daeed2e9fe146-57b1a3f-2073600-168eed85d1493f%22%2C%22props%22%3A%7B%22%24latest_utm_source%22%3A%22m_cf_cpt_baidu_pc%22%7D%7D; JSESSIONID=ABAAABAAAIAACBI1CC5D06F795927CD2CD461C0816AB3CE; showExpriedIndex=1; showExpriedCompanyHome=1; showExpriedMyPublish=1; hasDeliver=67; TG-TRACK-CODE=index_search; login=false; unick=""; _putrc=""; LG_LOGIN_USER_ID=""; LGRID={time}-187ab853-30c4-11e9-8025-525400f775ce; Hm_lpvt_4233e74dff0ae5bd0a3d81c6ccf756e6={timeStamp}; SEARCH_ID=3e440d6ecf8a47bc8248262837b98719".format(timeStamp=timeStamp,time=time1)
     ,'Host': 'www.lagou.com'
