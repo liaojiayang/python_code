@@ -26,12 +26,13 @@ headers = {'Referer': 'http://www.ziroom.com/'
 get_data = requests.get(url,headers=headers).text
 bs_data = bs4.BeautifulSoup(get_data,'html.parser')
 for i_2 in range(2,19):
-    name = bs_data.select('#houseList > li:nth-child({}) > div.txt > h3 > a'.format(i_2))[0].attrs['href']
-    # attrs['href'] 获取属性为'href'的数据
-    biaoqian1 = bs_data.select('#houseList > li:nth-child({}) > div.txt > h4'.format(i_2))[0].text.strip()
-    # strip() 删除空格
+    name = bs_data.select('#houseList > li:nth-child({}) > div.txt > h3 > a'.format(i_2))[0].text
+    biaoqian1 = bs_data.select('#houseList > li:nth-child({}) > div.txt > h4'.format(i_2))[0].text.strip() # strip() 删除空格
+    href = "http:{}".format(bs_data.select('#houseList > li:nth-child({}) > div.txt > h3 > a'.format(i_2))[0].attrs['href'])  # attrs['href'] 获取属性为'href'的数据
+
     print(name)
     print(biaoqian1)
+    print(href)
     time.sleep(1)
 '''完成房源信息查询
 价格需要进入下一级页面获取'''
