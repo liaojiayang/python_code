@@ -17,7 +17,7 @@ for im in im_list:
     plt.imshow(im_new)
     # 关闭坐标
     plt.axis('off')
-    # 保存图片
+    # 保存图片,去除白边
     plt.savefig(im_path_new,dpi=300,bbox_inches='tight')
 
 
